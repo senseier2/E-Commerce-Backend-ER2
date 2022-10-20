@@ -18,8 +18,6 @@
 * [Test](#test)
 * [Questions](#questions)
 
-## Description
-    Ecommerce back end for a small business
 
 ## Installation
     Download the E-Commerce repository including the mySql database.

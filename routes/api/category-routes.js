@@ -54,7 +54,7 @@ router.put('/:id', async (req, res) => {
       },
     });
     if (!updateCategory) {
-      res.status(404).json({ message: "There are no Categories with this id!"})
+      res.status(404).json({ message: "There are no Categories with this id!"});
     }
     res.status(200).json(updateCategory);
      } catch (err) {
@@ -64,19 +64,41 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
+  console.log("Hello")
   try {
-    const categoryInfo = await Category.destroy({
+    const categoryDelete = await Category.destroy({
       where: {
         id: req.params.id,
       },
     });
-    res.status(200).json(categoryInfo + " Deletion completed!")
-  if (!categoryInfo) {
-    res.status(404).json({ message: "No Category with that ID, try again buddy!"});
+
+    if (!categoryDelete) {
+      res.status(404).json({ message: "No Category with that ID, try again buddy!"})
   }
+    res.status(200).json(categoryDelete + "Category Deletion completed");
    } catch (err) {
     res.status(500).json(err);
   }
 });
+
+// router.delete('/:id', async (req, res) => {
+//   // delete a category by its `id` value
+//   try {
+//     const categoryData = await Category.destroy({
+//       where: {
+//         id: req.params.id,
+//       },
+//     });
+//     if (!categoryData) {
+//       res.status(404).json({ message: 'Invalid' });
+//       return;
+//     }
+//     res.status(200).json(categoryData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+
 
 module.exports = router;
